@@ -20,6 +20,7 @@ object Main extends SparkContextProvider {
     val empRDD2: CassandraTableScanRDD[Employee] = CassandraRepository.read2("company", "employee")
     empRDD2.collect().foreach(println)
 
+
     val dataRDD2 =
       sc.parallelize(List(Employee(5, "jack2", "jack2@gmail.com", System.currentTimeMillis())))
     CassandraRepository.write2(dataRDD2, "company", "employee")
